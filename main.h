@@ -53,7 +53,7 @@ typedef struct linkList_s
 } linkList;
 
 /**
- * struct newList_s - single linked list
+ * struct newList - single linked list
  * @line: command line
  * @next: next node
  * Description: single linked list to store command lines
@@ -107,7 +107,7 @@ void free_rvar_list(newVar **head);
 char * stringConcat(char *dest, const char *src);
 char *stringCopy(char *dest, char *src);
 int stringComp(char *s1, char *s2);
-char *stringChar(char *str, char*chr );
+char *stringChar(char *str, char chr );
 int sLenpSub(char *is, char *accept);
 
 /* aux_mem.c */
@@ -152,26 +152,8 @@ int splitCommands(data_shell *mydata, char *in);
 char **splitLine(char *in);
 
 
-/* split.c
-char *swap_char(char *input, int bool);
-void add_nodes(linkList **head_s, newList **head_l, char *input);
-void go_next(linkList **list_s, newList **list_l, data_shell *mydata);
-int split_commands(data_shell *mydata, char *input);
-char **split_line(char *input);
-
-*/
-
-
 /*excLine.c*/
 int FindBuilt(data_shell *mydata);
-
-/* cmd_exec.c 
-int is_cdir(char *path, int *i);
-char *_which(char *cmd, char **_environ);
-int is_executable(data_shell *mydata);
-int check_error_cmd(char *dir, data_shell *mydata);
-int cmd_exec(data_shell *mydata);
-*/
 /*executor.c*/
 
 int CurDirChecker(char *cp, int *ip);

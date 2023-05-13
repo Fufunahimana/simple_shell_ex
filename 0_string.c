@@ -66,7 +66,7 @@ return (0);
 * @chr: character.
 * Return: the pointer to the first occurrence of the character c.
 */
-char *stringChar(char *str, char*chr )
+char *stringChar(char *str, char chr)
 {
 unsigned int k = 0;
 

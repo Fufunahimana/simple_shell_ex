@@ -19,13 +19,13 @@ case 126:
 error = error_pathFind(mydata);
 break;
 case 127:
-error = error_not_found(mydata);
+error = error_missed(mydata);
 break;
 case 2:
 if (stringComp("exit", mydata->args[0]) == 0)
-error = error_exit_shell(mydata);
+error = error_shellExit(mydata);
 else if (stringComp("cd", mydata->args[0]) == 0)
-error = error_get_cd(mydata);
+error = error_missed(mydata);
 break;
 }
 
