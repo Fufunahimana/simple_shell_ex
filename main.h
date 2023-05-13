@@ -144,7 +144,7 @@ char *read_line(int *i_eof);
 
 
 /* split.c */
-
+linkList *add_newNode(linkList **head, char sep);
 char *swapChar(char *in, int bool);
 void addNodes(linkList **hs, newList **hl, char *in);
 void goNext(linkList **sl,newList **cl, data_shell *mydata);

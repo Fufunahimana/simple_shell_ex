@@ -147,7 +147,7 @@ list_l = head_l;
 while (list_l != NULL)
 {
 datash->input = list_l->line;
-datash->args = split_line(datash->input);
+datash->args = splitLine(datash->input);
 loop =  FindBuilt(datash);
 free(datash->args);
 
@@ -174,7 +174,7 @@ return (1);
 * @input: input string.
 * Return: string splitted.
 */
-char **split_line(char *input)
+char **splitLine(char *input)
 {
 size_t bsize;
 size_t i;
