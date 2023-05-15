@@ -91,6 +91,10 @@ typedef struct mybuiltin_s
         int (*f)(data_shell *mydata);
 } myBuiltin;
 
+/*builtin.c*/
+
+int (*getBuiltin(char *cmd))(data_shell *);
+
 /* 0_mylist.c */
 linkList *add_sep_newNode(linkList **head, char sep);
 void free_linkList(linkList **head);
@@ -168,13 +172,14 @@ int envCompName(const char *nenv, const char *name);
 char *findEnvVar(const char *name, char **_environ);
 int myenvi(data_shell *mydata);
 /*1_myenv.c*/
-
-char *copyInfo(char *name, char *value);
-void doSetEnv(char *name, char *value, data_shell *mydata);
-int setEnviro(data_shell *mydata);
-int doUnsetenv(data_shell *mydata);
+int get_error(data_shell *mydata, int eval);
+char *cpInfo(char *n, char *v);
+void setEnv(char *n, char *v, data_shell *mydata);
+int _setenv(data_shell *mydata);
+int _unsetenv(data_shell *mydata);
 
 /*changDir.c*/
+int get_error(data_shell *mydata, int eval);
 void cdParentDir(data_shell *mydata);
 void cdGivenDir(data_shell *mydata);
 void cdPrevDir(data_shell *mydata);
@@ -188,7 +193,7 @@ int cdShell(data_shell *mydata);
 int (*get_builtin(char *cmd))(data_shell *mydata);
 
 /* _exit.c */
-int exit_shell(data_shell *mydata);
+int exitShell(data_shell *mydata);
 
 /* aux_stdlib.c */
 int get_len(int n);

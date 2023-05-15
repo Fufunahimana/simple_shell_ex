@@ -14,11 +14,11 @@ char *dir, *cp_pwd, *cp_strtok_pwd;
 
 getcwd(pwd, sizeof(pwd));
 cp_pwd = stringDupl(pwd);
-doSetEnv("OLDPWD", cp_pwd, mydata);
+setEnv("OLDPWD", cp_pwd, mydata);
 dir = mydata->args[1];
 if (stringComp(".", dir) == 0)
 {
-doSetEnv("PWD", cp_pwd, mydata);
+setEnv("PWD", cp_pwd, mydata);
 free(cp_pwd);
 return;
 }
@@ -40,12 +40,12 @@ revString(cp_strtok_pwd);
 if (cp_strtok_pwd != NULL)
 {
 chdir(cp_strtok_pwd);
-doSetEnv("PWD", cp_strtok_pwd, mydata);
+setEnv("PWD", cp_strtok_pwd, mydata);
 }
 else
 {
 chdir("/");
-doSetEnv("PWD", "/", mydata);
+setEnv("PWD", "/", mydata);
 }
 mydata->status = 0;
 free(cp_pwd);
@@ -73,10 +73,10 @@ return;
 }
 
 cp_pwd = stringDupl(pwd);
-doSetEnv("OLDPWD", cp_pwd, mydata);
+setEnv("OLDPWD", cp_pwd, mydata);
 
 cp_dir = stringDupl(dir);
-doSetEnv("PWD", cp_dir, mydata);
+setEnv("PWD", cp_dir, mydata);
 
 free(cp_pwd);
 free(cp_dir);
@@ -106,12 +106,12 @@ cp_oldpwd = cp_pwd;
 else
 cp_oldpwd = stringDupl(p_oldpwd);
 
-doSetEnv("OLDPWD", cp_pwd, mydata);
+setEnv("OLDPWD", cp_pwd, mydata);
 
 if (chdir(cp_oldpwd) == -1)
-doSetEnv("PWD", cp_pwd, mydata);
+setEnv("PWD", cp_pwd, mydata);
 else
-doSetEnv("PWD", cp_oldpwd, mydata);
+setEnv("PWD", cp_oldpwd, mydata);
 
 p_pwd = findEnvVar("PWD", mydata->_environ);
 
@@ -145,7 +145,7 @@ home = findEnvVar("HOME", mydata->_environ);
 
 if (home == NULL)
 {
-doSetEnv("OLDPWD", p_pwd, mydata);
+setEnv("OLDPWD", p_pwd, mydata);
 free(p_pwd);
 return;
 }
@@ -157,8 +157,8 @@ free(p_pwd);
 return;
 }
 
-doSetEnv("OLDPWD", p_pwd, mydata);
-doSetEnv("PWD", home, mydata);
+setEnv("OLDPWD", p_pwd, mydata);
+setEnv("PWD", home, mydata);
 free(p_pwd);
 mydata->status = 0;
 }

@@ -1,18 +1,17 @@
 #include "main.h"
 
 /**
-* get_builtin -function that allow  builtin
-* that pais the command in the arg
+* getBuiltin - builtin that pais the command in the arg
 * @cmd: command
 * Return: function pointer of the builtin command
 */
-int (*get_builtin(char *cmd))(data_shell *)
+int (*getBuiltin(char *cmd))(data_shell *)
 {
-myBuiltin  builtin[] = {
+myBuiltin builtin[] = {
 { "env", myenvi },
-{ "exit", exit_shell },
-{ "setenv", setEnviro },
-{ "unsetenv", doUnsetenv },
+{ "exit", exitShell },
+{ "setenv", _setenv },
+{ "unsetenv", _unsetenv },
 { "cd", cdShell },
 { "help", helpme },
 { NULL, NULL }
